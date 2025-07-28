@@ -136,7 +136,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                     alt="Copied" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-7" 
+                    className="w-auto h-9 sm:h-7" 
                   />
                 ) : (
                   <Image 
@@ -144,7 +144,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                     alt="Copy Link" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-7" 
+                    className="w-auto h-9 sm:h-7" 
                   />
                 )}
               </button>
@@ -158,7 +158,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                   alt="Download" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-7" 
+                  className="w-auto h-9 sm:h-7" 
                 />
               </button>
 
@@ -172,7 +172,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                   alt="Share" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-7" 
+                  className="w-auto h-9 sm:h-7" 
                 />
               </button>
 
@@ -183,7 +183,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
 
       {/* Fullscreen Loading Spinner */}
       {loadingSlug && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-[#0d1117] backdrop-blur-sm flex items-center justify-center">
           <div className="animate-spin w-8 h-8 border-4 border-white border-t-transparent rounded-full" />
         </div>
       )}

@@ -90,7 +90,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                     alt="Copied" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-6" 
+                    className="w-auto h-6 sm:h-5" 
                   />
                 ) : (
                   <Image 
@@ -98,7 +98,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                     alt="Copy Link" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-6" 
+                    className="w-auto h-6 sm:h-5" 
                   />
                 )}
               </button>
@@ -112,7 +112,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                   alt="Download" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-6" 
+                  className="w-auto h-6 sm:h-5" 
                 />
               </button>
               <button
@@ -125,7 +125,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                   alt="Share" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-6" 
+                  className="w-auto h-6 sm:h-5" 
                 />
               </button>
             </div>
