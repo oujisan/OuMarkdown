@@ -130,7 +130,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                   alt="Share" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-6 sm:h-5" 
+                  className="w-auto h-5" 
                 />
               </button>
             </div>
