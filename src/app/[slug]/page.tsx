@@ -27,7 +27,6 @@ export default async function ViewerPage({ params }: PageProps) {
       mdx = await serialize(result.filteredContent);
     }
   } catch (err) {
-    console.error('❌ Error saat memuat markdown:', err);
     errorMessage = 'Terjadi kesalahan saat memuat konten.';
   }
 

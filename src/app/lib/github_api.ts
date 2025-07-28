@@ -1,164 +1,164 @@
-import axios, { AxiosError } from 'axios'
+  import axios, { AxiosError } from 'axios'
 
-export const api = axios.create({
-  baseURL: "https://api.github.com",
-  headers: {
-    Accept: "application/vnd.github+json",
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-})
-
-export interface githubApiFileMeta {
-  name: string
-  sha: string
-  path: string
-}
-
-export interface markdown {
-  title: string
-  slug: string
-  category: string
-}
-
-export interface logMessage {
-  code: number
-  message: string
-}
-
-// --- Ekstrak judul dan kategori dari isi markdown ---
-function extractTitle(content: string): {
-  title: string;
-  category: string;
-  filteredContent: string;
-} {
-  const lines = content.split("\n");
-
-  for (let i = 0; i < lines.length; i++) {
-    const trimmed = lines[i].trim();
-
-    if (/^#\s+/.test(trimmed)) {
-      const rawTitle = trimmed.replace(/^#\s*/, "").trim();
-      const match = rawTitle.match(/^\[(.+?)\]\s*(.*)$/);
-
-      if (match) {
-        const [, category, titleWithoutCategory] = match;
-        lines[i] = `# ${titleWithoutCategory.trim()}`;
-
-        return {
-          title: titleWithoutCategory.trim(),
-          category: category.trim().toLowerCase(),
-          filteredContent: lines.join("\n"),
-        };
-      }
-
-      return {
-        title: rawTitle,
-        category: "note",
-        filteredContent: content,
-      };
+  export const api = axios.create({
+    baseURL: "https://api.github.com",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: 'Bearer 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',
+      'X-GitHub-Api-Version': '2022-11-28'
     }
+  })
+
+  export interface githubApiFileMeta {
+    name: string
+    sha: string
+    path: string
   }
 
-  const fallback = content
-    .replace(/^#*/, "")
-    .replace(/\s+/g, " ")
-    .slice(0, 100)
-    .trim();
+  export interface markdown {
+    title: string
+    slug: string
+    category: string
+  }
 
-  return {
-    title: fallback || "Untitled",
-    category: "note",
-    filteredContent: content,
-  };
-}
+  export interface logMessage {
+    code: number
+    message: string
+  }
 
-export async function getAllMarkdown(): Promise<markdown[]> {
-  try {
-    const response = await api.get<githubApiFileMeta[]>(
-      'repos/oujisan/OuVault/contents'
-    );
+  function extractTitle(content: string): {
+    title: string;
+    category: string;
+    filteredContent: string;
+  } {
+    const lines = content.split("\n");
 
-    const files = response.data.filter(
-      (file) =>
-        file.name.endsWith(".md") &&
-        file.name.toLowerCase() !== "readme.md"
-    );
+    for (let i = 0; i < lines.length; i++) {
+      const trimmed = lines[i].trim();
 
-    if (files.length === 0) {
-      return [];
-    }
+      if (/^#\s+/.test(trimmed)) {
+        const rawTitle = trimmed.replace(/^#\s*/, "").trim();
+        const match = rawTitle.match(/^\[(.+?)\]\s*(.*)$/);
 
-    const markdowns = await Promise.all(
-      files.map(async (file) => {
-        const slug = file.name.replace(/\.md$/, "");
+        if (match) {
+          const [, category, titleWithoutCategory] = match;
+          lines[i] = `# ${titleWithoutCategory.trim()}`;
 
-        try {
-          const res = await api.get(`repos/oujisan/OuVault/contents/${file.name}`);
-          const base64 = res.data.content;
-          const content = atob(base64);
-          const { title, category } = extractTitle(content);
-
-          return { title, slug, category };
-        } catch {
           return {
-            title: file.name.replace(/\.md$/, ""),
-            slug,
-            category: 'note'
+            title: titleWithoutCategory.trim(),
+            category: category.trim().toLowerCase(),
+            filteredContent: lines.join("\n"),
           };
         }
-      })
-    );
 
-    return markdowns;
-  } catch (error) {
-    const axiosError = error as AxiosError;
-    const status = axiosError.response?.status;
-    const message = axiosError.message;
+        return {
+          title: rawTitle,
+          category: "note",
+          filteredContent: content,
+        };
+      }
+    }
 
-    const log: logMessage = {
-      message: error instanceof Error ? message : "Unknown error occurred",
-      code: status || 500,
+    const fallback = content
+      .replace(/^#*/, "")
+      .replace(/\s+/g, " ")
+      .slice(0, 100)
+      .trim();
+
+    return {
+      title: fallback || "Untitled",
+      category: "note",
+      filteredContent: content,
     };
-    throw log;
   }
-}
 
-export async function getMarkdown(slug: string) {
-  try {
-    const filename = `${slug}.md`;
-    const res = await api.get(`repos/oujisan/OuVault/contents/${filename}`);
+  export async function getAllMarkdown(): Promise<markdown[]> {
+    try {
+      const response = await api.get<githubApiFileMeta[]>(
+        'repos/oujisan/OuVault/contents'
+      );
 
-    const base64 = res.data.content;
-    const decoded = atob(base64);
-    const { title, filteredContent } = extractTitle(decoded);
+      const files = response.data.filter(
+        (file) =>
+          file.name.endsWith(".md") &&
+          file.name.toLowerCase() !== "readme.md"
+      );
 
-    return {title, filteredContent};
-  } catch (error) {
-    const axiosError = error as AxiosError;
-    const status = axiosError.response?.status;
-    const message = axiosError.message;
+      if (files.length === 0) {
+        return [];
+      }
 
-    const log: logMessage = {
-      message: error instanceof Error ? message : "Unknown error occurred",
-      code: status || 500,
-    };
-    throw log;
+      const markdowns = await Promise.all(
+        files.map(async (file) => {
+          const slug = file.name.replace(/\.md$/, "");
+
+          try {
+            const res = await api.get(`repos/oujisan/OuVault/contents/${file.name}`);
+            const base64 = res.data.content;
+            const content = atob(base64);
+            const { title, category } = extractTitle(content);
+
+            return { title, slug, category };
+          } catch {
+            return {
+              title: file.name.replace(/\.md$/, ""),
+              slug,
+              category: 'note'
+            };
+          }
+        })
+      );
+
+      return markdowns;
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      const status = axiosError.response?.status;
+      const message = axiosError.message;
+
+      const log: logMessage = {
+        message: error instanceof Error ? message : "Unknown error occurred",
+        code: status || 500,
+      };
+      throw log;
+    }
   }
-}
 
-export interface RateLimitInfo {
-  limit: number
-  remaining: number
-  reset: number
-}
+  export async function getMarkdown(slug: string) {
+    try {
+      const filename = `${slug}.md`;
+      const res = await api.get(`repos/oujisan/OuVault/contents/${filename}`);
 
-export async function getGitHubRateLimit(): Promise<RateLimitInfo | null> {
-  try {
-    const res = await api.get('/rate_limit');
-    const { limit, remaining, reset } = res.data.rate;
+      const base64 = res.data.content;
+      const decoded = atob(base64);
+      const { title, filteredContent } = extractTitle(decoded);
 
-    return { limit, remaining, reset };
-  } catch {
-    return null;
+      return {title, filteredContent};
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      const status = axiosError.response?.status;
+      const message = axiosError.message;
+
+      const log: logMessage = {
+        message: error instanceof Error ? message : "Unknown error occurred",
+        code: status || 500,
+      };
+      throw log;
+    }
   }
-}
+
+  export interface RateLimitInfo {
+    limit: number
+    remaining: number
+    reset: number
+  }
+
+  export async function getGitHubRateLimit(): Promise<RateLimitInfo | null> {
+    try {
+      const res = await api.get('/rate_limit');
+      const { limit, remaining, reset } = res.data.rate;
+
+      return { limit, remaining, reset };
+    } catch {
+      return null;
+    }
+  }
