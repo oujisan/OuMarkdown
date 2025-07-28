@@ -1,8 +1,6 @@
 import axios, { AxiosError } from 'axios'
 
 const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || process.env.GITHUB_TOKEN
-console.log('Token exists:', !!token)
-console.log('Token prefix:', token?.substring(0, 10))
 
 export const api = axios.create({
   baseURL: "https://api.github.com",
