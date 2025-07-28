@@ -101,6 +101,21 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
                   className="h-6 w-auto" 
                 />
               </a>
+              <a
+                href="https://discordapp.com/users/747625893928763393"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Discord"
+                className="p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)] hidden sm:block"
+              >
+                <Image 
+                  src="/discord.svg" 
+                  alt="Discord" 
+                  width={24} 
+                  height={24} 
+                  className="h-6 w-auto" 
+                />
+              </a>
             </div>
           </div>
 

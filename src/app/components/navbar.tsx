@@ -62,7 +62,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 mb-4 w-full bg-[var(--color-bg)] text-[var(--color-text-light)] shadow-sm backdrop-blur-md">
       <nav className="w-full">
-        <div className="max-w-screen-xl mx-auto py-6 px-4 sm:px-6 md:px-10 lg:px-16">
+        <div className="max-w-screen-xl mx-auto py-4 px-4 sm:px-6 md:px-10 lg:px-16">
           <div className="grid grid-cols-3 items-center">
             <div className="flex items-center">
               <Link href="/" className="flex items-center h-full" aria-label="Fumori Home">
@@ -78,10 +78,10 @@ export default function Navbar({ title, slug }: NavbarProps) {
             <div className="text-center text-sm font-mono text-[var(--color-gray)] break-words max-w-[80%] mx-auto">
               <p>{title}</p>
             </div>
-            <div className="flex gap-4 items-center justify-end pr-2 sm:pr-4 md:pr-6 lg:pr-10">
+            <div className="flex gap-3 items-center justify-end pr-2 sm:pr-4 md:pr-6 lg:pr-10">
               <button
                 onClick={() => handleCopy(slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)] hidden sm:block"
                 title="Copy"
               >
                 {copiedSlug === slug ? (
@@ -104,7 +104,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
               </button>
               <button
                 onClick={() => handleShare(slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)]"
                 title="Share"
               >
                 <Image 
@@ -117,7 +117,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
               </button>
               <button
                 onClick={() => handleDownload(slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)] hidden sm:block"
                 title="Download"
               >
                 <Image 

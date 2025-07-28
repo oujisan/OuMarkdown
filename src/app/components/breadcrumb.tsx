@@ -9,7 +9,7 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ current }: BreadcrumbProps) {
   return (
-    <div className="flex items-center space-x-2 text-sm pl-8 text-[var(--color-text-dim)]">
+    <div className="flex items-center space-x-2 text-sm pl-5 md:pl-8 text-[var(--color-text-dim)]">
       <Link
         href="/"
         className="flex items-center hover:text-[var(--color-text-light)] transition"

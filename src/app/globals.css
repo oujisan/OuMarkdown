@@ -105,6 +105,9 @@ button[aria-label="Copy Code"] svg {
     padding: 0 !important;
     font-size: inherit;
     line-height: inherit;
+    margin-top: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
 
   .hljs {
