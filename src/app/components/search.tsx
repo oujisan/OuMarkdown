@@ -32,7 +32,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
   }
 
   const handleShare = async (slug: string) => {
-    const url = `${location.origin}/notes/${slug}`
+    const url = `${location.origin}/${slug}`
     try {
       if (navigator.share) {
         await navigator.share({
@@ -101,12 +101,12 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
         filtered.map((post) => (
           <div
             key={post.slug}
-            className="border border-[#30363d] hover:border-[#2a6fd1] rounded-xl p-4 flex justify-between items-center mb-3 hover:bg-[#161b22] transition-colors"
+            className="border border-[#30363d] hover:border-[#2a6fd1] rounded-xl p-4 flex justify-between items-center mb-3 hover:bg-[#161b22] transition-colors cursor-pointer"
           >
             {/* Clickable Title */}
             <button
               onClick={() => handleNavigate(post.slug)}
-              className="flex gap-4 items-center w-full min-w-0 text-left"
+              className="flex gap-4 items-center w-full min-w-0 text-left cursor-pointer"
             >
               <img
                 src={

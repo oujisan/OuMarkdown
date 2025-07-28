@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Search from './components/search'
 import Navbar from './components/navbar-search'
 import { getAllMarkdown, markdown } from '@/app/lib/github_api'
-import RouteLoadingIndicator from '@/app/components/route-loading-indikator'
 
 export default function Home() {
   const [markdowns, setMarkdowns] = useState<markdown[]>([])

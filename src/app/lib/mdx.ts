@@ -21,7 +21,7 @@ export async function fetchAndSerializeMDX(
 
     return mdxSource
   } catch (err) {
-    console.error('❌ Error serializing MDX:', err)
+    console.error('Error serializing MDX:', err)
     return null
   }
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Home, Book, FileText } from 'lucide-react'
+import { Home, FileText } from 'lucide-react'
 
 interface BreadcrumbProps {
   current: string

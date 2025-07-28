@@ -33,7 +33,7 @@ button[aria-label="Copy Code"] svg {
   }
 
   .prose h1 {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     line-height: 1.2;
     font-weight: 800;
     color: var(--color-text-light);
@@ -41,7 +41,7 @@ button[aria-label="Copy Code"] svg {
   }
 
   .prose h2 {
-    font-size: 1.8rem;
+    font-size: 2.0rem;
     font-weight: 700;
     color: var(--color-text-light);
     margin-top: 2rem;
@@ -49,7 +49,7 @@ button[aria-label="Copy Code"] svg {
   }
 
   .prose h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-text-light);
     margin-top: 1.5rem;
@@ -144,6 +144,72 @@ button[aria-label="Copy Code"] svg {
   max-height: 150%;
   aspect-ratio: 16 / 9;
   object-fit: contain;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.prose ul li {
+  margin: 0.5rem 0;
+  color: var(--color-text-light);
+}
+
+.prose input[type="checkbox"] {
+  accent-color: var(--color-accent-blue);
+  margin-right: 0.5rem;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.prose figure {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.prose figcaption {
+  font-size: 0.875rem;
+  color: var(--color-text-dim);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.prose blockquote strong {
+  color: var(--color-accent-blue);
+}
+
+.prose blockquote:has(strong:contains("Info")) {
+  border-left-color: var(--color-accent-blue);
+}
+
+.prose blockquote:has(strong:contains("Warning")) {
+  border-left-color: #d97706;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  scroll-margin-top: 5rem;
+  position: relative;
+}
+
+.prose h2::before {
+  content: "#";
+  position: absolute;
+  left: -1.5rem;
+  color: var(--color-accent-blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.prose h2:hover::before {
+  opacity: 1;
 }
 
 

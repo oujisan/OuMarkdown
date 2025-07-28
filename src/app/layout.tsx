@@ -11,6 +11,9 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "OuMarkdown",
   description: "Oujisan's Markdown Collection",
+  icons: {
+    icon: '/fumori.ico',
+  },
 };
 
 export default function RootLayout({

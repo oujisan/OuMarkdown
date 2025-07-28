@@ -13,19 +13,37 @@ export default async function ViewerPage({ params }: PageProps) {
   const awaitedParams = await params;
   const slug = awaitedParams.slug;
 
-  const post = await getMarkdown(slug);
+  let mdx = null;
+  let errorMessage = '';
+  let title = '';
 
-  if (!post) return <div>Markdown not found.</div>
+  try {
+    const result = await getMarkdown(slug);
+    title = result.title;
 
-  const mdx = await serialize(post)
+    if (!result.filteredContent) {
+      errorMessage = 'Catatan tidak ditemukan.';
+    } else {
+      mdx = await serialize(result.filteredContent);
+    }
+  } catch (err: any) {
+    console.error('❌ Error saat memuat markdown:', err);
+    errorMessage = 'Terjadi kesalahan saat memuat konten.';
+  }
 
   return (
     <div>
-        <Navbar />
-        <div className='max-w-4xl mx-auto px-4 sm:px-8'>
-            <Breadcrumb current={slug}/>
-        </div>
-        <ClientWrapper mdx={mdx} />
+      <Navbar title={title} slug={slug} />
+      <div className='max-w-4xl mx-auto px-4 sm:px-8'>
+        <Breadcrumb current={slug} />
+        {errorMessage ? (
+          <div className="mt-10 p-6 rounded-xl bg-red-500/10 border border-red-500 text-red-300 font-mono">
+            ⚠️ {errorMessage}
+          </div>
+        ) : (
+          <ClientWrapper mdx={mdx!} />
+        )}
+      </div>
     </div>
-  )
+  );
 }
