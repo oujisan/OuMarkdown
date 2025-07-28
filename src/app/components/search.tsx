@@ -171,7 +171,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                   alt="Share" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-9 sm:h-7" 
+                  className="w-auto h-7 sm:h-7" 
                 />
               </button>
 
