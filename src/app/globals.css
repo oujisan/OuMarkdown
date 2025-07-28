@@ -57,6 +57,18 @@ button[aria-label="Copy Code"] svg {
     margin-bottom: 0.75rem;
   }
 
+  @media (max-width: 640px) {
+    .prose h1 {
+      font-size: 1.3rem;
+    }
+    .prose h2 {
+      font-size: 1.2rem;
+    }
+    .prose h3 {
+      font-size: 1.1rem;
+    }
+  }
+
   .prose p {
     margin: 1rem 0;
     color: var(--color-text-dim);
@@ -147,7 +159,6 @@ button[aria-label="Copy Code"] svg {
   border-radius: 0.5rem;
   max-width: 100%;
   max-height: 150%;
-  aspect-ratio: 16 / 9;
   object-fit: contain;
 }
 

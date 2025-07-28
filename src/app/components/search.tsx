@@ -120,7 +120,10 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                 height={24}
                 className="h-6 w-auto"
               />
-              <p className="font-semibold break-words">{post.title}</p>
+              <p className="font-semibold break-words text-sm sm:text-base md:text-lg">
+                {post.title}
+              </p>
+
             </button>
 
             {/* Action Buttons */}

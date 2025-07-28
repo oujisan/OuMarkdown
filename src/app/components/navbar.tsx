@@ -71,8 +71,17 @@ export default function Navbar({ title, slug }: NavbarProps) {
                 />
               </Link>
             </div>
-            <div className="text-center text-sm font-mono text-[var(--color-gray)] break-words max-w-[80%] mx-auto">
-              <p>{title}</p>
+            <div className="text-center text-sm font-mono text-[var(--color-gray)] max-w-[80%] mx-auto">
+              <p
+                className="
+                  overflow-hidden whitespace-nowrap text-ellipsis
+                  sm:overflow-hidden sm:whitespace-nowrap sm:text-ellipsis
+                  md:whitespace-normal md:overflow-visible md:text-clip
+                "
+                title={title}
+              >
+                {title}
+              </p>
             </div>
             <div className="flex gap-3 items-center justify-end pr-2 sm:pr-4 md:pr-6 lg:pr-10">
               <button
