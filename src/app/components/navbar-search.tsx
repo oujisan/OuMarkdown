@@ -73,9 +73,14 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
             <div className="text-center">
               <p className="font-semibold text-lg">OuMarkdown</p>
               <p className="text-xs font-mono text-[var(--color-gray)]">
-                {rate
-                  ? `Rate ${rate.remaining}/${rate.limit} • Resets in ${countdown}`
-                  : 'Loading rate limit...'}
+                {rate ? (
+                  <>
+                    Rate {rate.remaining}/{rate.limit}
+                    {rate.remaining < rate.limit && ` • Resets in ${countdown}`}
+                  </>
+                ) : (
+                  'Loading rate limit...'
+                )}
               </p>
             </div>
 
