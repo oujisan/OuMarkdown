@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getGitHubRateLimit, RateLimitInfo } from '@/app/lib/github_api'
+// import { getGitHubRateLimit, RateLimitInfo } from '@/app/lib/github_api'
 
 interface NavbarProps {
   onSearchChange?: (search: string) => void
@@ -11,37 +11,37 @@ interface NavbarProps {
 
 export default function Navbar({ onSearchChange }: NavbarProps) {
   const [search, setSearch] = useState('')
-  const [rate, setRate] = useState<RateLimitInfo | null>(null)
+  // const [rate, setRate] = useState<RateLimitInfo | null>(null)
   const [countdown, setCountdown] = useState('')
 
-  useEffect(() => {
-    getGitHubRateLimit().then(setRate)
-  }, [])
+  // useEffect(() => {
+  //   getGitHubRateLimit().then(setRate)
+  // }, [])
 
-  useEffect(() => {
-    if (!rate) return
+  // useEffect(() => {
+  //   if (!rate) return
 
-    const interval = setInterval(() => {
-      const now = Math.floor(Date.now() / 1000)
-      const diff = rate.reset - now
+  //   const interval = setInterval(() => {
+  //     const now = Math.floor(Date.now() / 1000)
+  //     const diff = rate.reset - now
 
-      if (diff <= 0) {
-        setCountdown('00:00')
-        clearInterval(interval)
+  //     if (diff <= 0) {
+  //       setCountdown('00:00')
+  //       clearInterval(interval)
 
-        getGitHubRateLimit().then(setRate)
-        return
-      }
+  //       getGitHubRateLimit().then(setRate)
+  //       return
+  //     }
 
-      const minutes = Math.floor(diff / 60)
-      const seconds = diff % 60
-      setCountdown(
-        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-      )
-    }, 1000)
+  //     const minutes = Math.floor(diff / 60)
+  //     const seconds = diff % 60
+  //     setCountdown(
+  //       `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+  //     )
+  //   }, 1000)
 
-    return () => clearInterval(interval)
-  }, [rate])
+  //   return () => clearInterval(interval)
+  // }, [rate])
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -72,7 +72,7 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
             {/* Title */}
             <div className="text-center">
               <p className="font-semibold text-lg">OuMarkdown</p>
-              <p className="text-xs font-mono text-[var(--color-gray)]">
+              {/* <p className="text-xs font-mono text-[var(--color-gray)]">
                 {rate ? (
                   <>
                     Rate {rate.remaining}/{rate.limit}
@@ -81,7 +81,7 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
                 ) : (
                   'Loading rate limit...'
                 )}
-              </p>
+              </p> */}
             </div>
 
             {/* GitHub */}
