@@ -1,4 +1,38 @@
 # OuMakdown
-A Markdown Website (ReadOnly)
+OuMarkdown is website catatan berbasis markdown. Website ini merupakan alternatif bagi oujisan untuk membagikan catatan miliknya secara cepat dan kustomisasi bebas. Website ini hanya bisa membaca catatan dari penyimpanan markdown yang disebut [OuValut](https://github.com/oujisan/OuVault). Ouji membuat dan mengedit markdown secara lokal menggunakan [Obsidian](https://obsidian.md/), update catatan akan di push ke repository github dan Web membaca markdown yang tersimpan di OuValut melalui `api.github.com` lalu menampilkannya pada web.
 
-Coming Soon
+## Stack:
+| Language | Framework | Styling |Storage | Library | Deployment
+| - | - | - | - | - | - |
+| <img src="./public/category/typescript.svg" height="15" /> &nbsp; Typescript | <img src="./public/category/nextjs.svg" height="15" /> &nbsp; NextJS | <img src="./public/category/tailwind.svg" height="15" /> &nbsp; Tailwind | <img src="./public/category/github.svg" height="15" /> &nbsp; Github | <img src="./public/category/md.svg" height="15" /> &nbsp; MDX | <img src="./public/category/vercel.svg" height="15" /> &nbsp; Vercel
+
+## Feature:
+1. Dapat diakses semua orang
+Apabila pengunjung atau Ouji ingin membagikan markdownnya makan terdapat link untuk membaca markdown langsung dari web dengan mudah
+
+2. Icon unik untuk tiap catatan
+Setiap markdown akan diawali dengan `# [{category}] {title}`, program akan mendeteksi otomatis category apabila termasuk pada list category yang ada maka akan tampil icon sesuai dengan cateogry yang ada pada [./public/category](https://github.com/oujisan/OuMakdown/tree/main/public/category), apabila tidak ada maka akan menggunakan icon default. Terdapat lebih dari 50 category yang tersedia.
+
+3. Limit API yang Memadai
+Dengan menggunakan [Github API](https://docs.github.com/en/rest?apiVersion=2022-11-28) dan [fine grained-tokens](https://github.com/settings/tokens) memungkinkan untuk melakukan 5000 request pada API yang akan direset perjam. Sehingga dapat puas melihat dan membaca markdown tanpa khawatir terkena limit
+
+4. Download markdown
+Apabila pengunjung ingin mendownload file markdown, terdapat action button untuk mendownload file menggunakan `https://raw.githubusercontent.com/`.
+
+5. Fitur Pencarian
+Diserakan searching untuk mencari catatan lebih cepat dan tersturktur, pengunjung juga bisa mencari berdasarkan category dengan menambahkan `#` pada awal kata search
+
+## Category
+| <img src="./public/category/ai.svg" height="30" /> | <img src="./public/category/cloud.svg" height="30" /> | <img src="./public/category/database.svg" height="30" /> | <img src="./public/category/git.svg" height="30" /> | <img src="./public/category/laravel.svg" height="30" /> | <img src="./public/category/network.svg" height="30" /> | <img src="./public/category/qna.svg" height="30" /> | <img src="./public/category/troubleshoot.svg" height="30" /> | <img src="./public/category/anime.svg" height="30" /> | <img src="./public/category/code.svg" height="30" /> |
+| - | - | - | - | - | - | - | - | - | - |
+| <p align="center">Ai</p> | <p align="center">Cloud</p> | <p align="center">Database</p> | <p align="center">Git</p> | <p align="center">Laravel</p> | <p align="center">Network</p> | <p align="center">QnA</p> | <p align="center">Troubleshoot</p> | <p align="center">Anime</p> | <p align="center">Code</p> |
+| <p align="center"><img src="./public/category/expressjs.svg" height="30" /></p> | <p align="center"><img src="./public/category/github.svg" height="30" /></p> | <p align="center"><img src="./public/category/linux.svg" height="30" /></p> | <p align="center"><img src="./public/category/nextjs.svg" height="30" /></p> | <p align="center"><img src="./public/category/react.svg" height="30" /></p> | <p align="center"><img src="./public/category/csharp.svg" height="30" /></p> | <p align="center"><img src="./public/category/typescript.svg" height="30" /></p> | <p align="center"><img src="./public/category/extension.svg" height="30" /></p> | <p align="center"><img src="./public/category/html.svg" height="30" /></p> | <p align="center"><img src="./public/category/logbook.svg" height="30" /></p> |
+| <p align="center">ExpressJS</p> | <p align="center">GitHub</p> | <p align="center">Linux</p> | <p align="center">Next.js</p> | <p align="center">React</p> | <p align="center">C#</p> | <p align="center">Typescript</p> | <p align="center">Extension</p> | <p align="center">HTML</p> | <p align="center">Logbook</p> |
+| <p align="center"><img src="./public/category/note.svg" height="30" /></p> | <p align="center"><img src="./public/category/review.svg" height="30" /></p> | <p align="center"><img src="./public/category/video.svg" height="30" /></p> | <p align="center"><img src="./public/category/assembly.svg" height="30" /></p> | <p align="center"><img src="./public/category/css.svg" height="30" /></p> | <p align="center"><img src="./public/category/firebase.svg" height="30" /></p> | <p align="center"><img src="./public/category/idea.svg" height="30" /></p> | <p align="center"><img src="./public/category/matkul.svg" height="30" /></p> | <p align="center"><img src="./public/category/penetration.svg" height="30" /></p> | <p align="center"><img src="./public/category/script.svg" height="30" /></p> |
+| <p align="center">Note</p> | <p align="center">Review</p> | <p align="center">Video</p> | <p align="center">Assembly</p> | <p align="center">CSS</p> | <p align="center">Firebase</p> | <p align="center">Idea</p> | <p align="center">Matkul</p> | <p align="center">Penetration</p> | <p align="center">Script</p> |
+| <p align="center"><img src="./public/category/vue.svg" height="30" /></p> | <p align="center"><img src="./public/category/blockchain.svg" height="30" /></p> | <p align="center"><img src="./public/category/ctf.svg" height="30" /></p> | <p align="center"><img src="./public/category/fix.svg" height="30" /></p> | <p align="center"><img src="./public/category/javascript.svg" height="30" /></p> | <p align="center"><img src="./public/category/md.svg" height="30" /></p> | <p align="center"><img src="./public/category/php.svg" height="30" /></p> | <p align="center"><img src="./public/category/sqlite.svg" height="30" /></p> | <p align="center"><img src="./public/category/web.svg" height="30" /></p> | <p align="center"><img src="./public/category/box.svg" height="30" /></p> |
+| <p align="center">Vue</p> | <p align="center">Blockchain</p> | <p align="center">CTF</p> | <p align="center">Fix</p> | <p align="center">JavaScript</p> | <p align="center">MD</p> | <p align="center">PHP</p> | <p align="center">SQLite</p> | <p align="center">Web</p> | <p align="center">Box</p> |
+| <p align="center"><img src="./public/category/dart.svg" height="30" /></p> | <p align="center"><img src="./public/category/flutter.svg" height="30" /></p> | <p align="center"><img src="./public/category/kotlin.svg" height="30" /></p> | <p align="center"><img src="./public/category/music.svg" height="30" /></p> | <p align="center"><img src="./public/category/postgresql.svg" height="30" /></p> | <p align="center"><img src="./public/category/tailwind.svg" height="30" /></p> | <p align="center"><img src="./public/category/c++.svg" height="30" /></p> | <p align="center"><img src="./public/category/game.svg" height="30" /></p> | <p align="center"><img src="./public/category/language.svg" height="30" /></p> | <p align="center"><img src="./public/category/mysql.svg" height="30" /></p> |
+| <p align="center">Dart</p> | <p align="center">Flutter</p> | <p align="center">Kotlin</p> | <p align="center">Music</p> | <p align="center">PostgreSQL</p> | <p align="center">Tailwind</p> | <p align="center">C++</p> | <p align="center">Game</p> | <p align="center">Language</p> | <p align="center">MySQL</p> |
+| <p align="center"><img src="./public/category/python.svg" height="30" /></p> | <p align="center"><img src="./public/category/terminal.svg" height="30" /></p> |
+| <p align="center">Python</p> | <p align="center">Terminal</p> |
