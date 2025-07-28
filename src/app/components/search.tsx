@@ -124,7 +124,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
             </button>
 
             {/* Action Buttons */}
-            <div className="flex gap-3 items-center ml-4">
+            <div className="flex gap-4 items-center ml-4">
               <button
                 onClick={() => handleCopy(post.slug)}
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
@@ -136,7 +136,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                     alt="Copied" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-5" 
+                    className="w-auto h-7" 
                   />
                 ) : (
                   <Image 
@@ -144,9 +144,22 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                     alt="Copy Link" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-5" 
+                    className="w-auto h-7" 
                   />
                 )}
+              </button>
+              <button
+                onClick={() => handleDownload(post.slug)}
+                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer "
+                title="Download"
+              >
+                <Image 
+                  src="/download.svg" 
+                  alt="Download" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-7" 
+                />
               </button>
 
               <button
@@ -159,23 +172,10 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                   alt="Share" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-5" 
+                  className="w-auto h-7" 
                 />
               </button>
 
-              <button
-                onClick={() => handleDownload(post.slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-                title="Download"
-              >
-                <Image 
-                  src="/download.svg" 
-                  alt="Download" 
-                  width={20} 
-                  height={20} 
-                  className="w-auto h-5" 
-                />
-              </button>
             </div>
           </div>
         ))

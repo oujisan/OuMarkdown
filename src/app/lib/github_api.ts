@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
 
-const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || process.env.GITHUB_TOKEN
+const token = process.env.GITHUB_TOKEN
 
 export const api = axios.create({
   baseURL: "https://api.github.com",
@@ -163,12 +163,6 @@ export async function getMarkdown(slug: string) {
     const axiosError = error as AxiosError;
     const status = axiosError.response?.status;
     const message = axiosError.message;
-
-    console.error('GitHub API Error:', {
-      status,
-      message,
-      response: axiosError.response?.data
-    });
 
     const log: logMessage = {
       message: error instanceof Error ? message : "Unknown error occurred",

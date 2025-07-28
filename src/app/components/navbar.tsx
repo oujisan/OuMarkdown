@@ -81,7 +81,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
             <div className="flex gap-3 items-center justify-end pr-2 sm:pr-4 md:pr-6 lg:pr-10">
               <button
                 onClick={() => handleCopy(slug)}
-                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)] hidden sm:block"
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border transition-all hover:border-[var(--color-gray)] hidden sm:block"
                 title="Copy"
               >
                 {copiedSlug === slug ? (
@@ -90,7 +90,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
                     alt="Copied" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-5" 
+                    className="w-auto h-6" 
                   />
                 ) : (
                   <Image 
@@ -98,26 +98,13 @@ export default function Navbar({ title, slug }: NavbarProps) {
                     alt="Copy Link" 
                     width={20} 
                     height={20} 
-                    className="w-auto h-5" 
+                    className="w-auto h-6" 
                   />
                 )}
               </button>
               <button
-                onClick={() => handleShare(slug)}
-                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)]"
-                title="Share"
-              >
-                <Image 
-                  src="/share.svg" 
-                  alt="Share" 
-                  width={20} 
-                  height={20} 
-                  className="w-auto h-5" 
-                />
-              </button>
-              <button
                 onClick={() => handleDownload(slug)}
-                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)] hidden sm:block"
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border transition-all hover:border-[var(--color-gray)] hidden sm:block"
                 title="Download"
               >
                 <Image 
@@ -125,7 +112,20 @@ export default function Navbar({ title, slug }: NavbarProps) {
                   alt="Download" 
                   width={20} 
                   height={20} 
-                  className="w-auto h-5" 
+                  className="w-auto h-6" 
+                />
+              </button>
+              <button
+                onClick={() => handleShare(slug)}
+                className="opacity-30 hover:opacity-100 duration-200 cursor-pointer p-1 rounded-md border transition-all hover:border-[var(--color-gray)]"
+                title="Share"
+              >
+                <Image 
+                  src="/share.svg" 
+                  alt="Share" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-6" 
                 />
               </button>
             </div>
