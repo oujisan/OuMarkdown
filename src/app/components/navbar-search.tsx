@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import { getGitHubRateLimit, RateLimitInfo } from '@/app/lib/github_api'
 
 interface NavbarProps {
@@ -56,9 +58,15 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
           <div className="grid grid-cols-3 items-center mb-2">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="flex items-center h-full" aria-label="Fumori Home">
-                <img src="/fumori.svg" alt="Fumori Logo" className="h-5 w-auto" />
-              </a>
+              <Link href="/" className="flex items-center h-full" aria-label="Fumori Home">
+                <Image 
+                  src="/fumori.svg" 
+                  alt="Fumori Logo" 
+                  width={20} 
+                  height={20} 
+                  className="h-5 w-auto" 
+                />
+              </Link>
             </div>
 
             {/* Title */}
@@ -80,7 +88,13 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
                 aria-label="GitHub"
                 className="p-1 rounded-md border border-transparent transition-all hover:border-[var(--color-gray)]"
               >
-                <img src="/github.svg" alt="GitHub" className="h-6 w-auto" />
+                <Image 
+                  src="/github.svg" 
+                  alt="GitHub" 
+                  width={24} 
+                  height={24} 
+                  className="h-6 w-auto" 
+                />
               </a>
             </div>
           </div>
@@ -88,7 +102,13 @@ export default function Navbar({ onSearchChange }: NavbarProps) {
           {/* Search Bar */}
           <div className="flex justify-center mb-2 mt-8">
             <div className="flex items-center border-x-2 border-[#2a6fd1] rounded-full px-4 py-2 bg-[#161b22] gap-3 w-full max-w-2xl">
-              <img src="/search.svg" className="h-6 w-auto" />
+              <Image 
+                src="/search.svg" 
+                alt="Search icon"
+                width={24} 
+                height={24} 
+                className="h-6 w-auto" 
+              />
               <input
                 type="text"
                 placeholder="Search..."

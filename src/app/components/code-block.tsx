@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Copy, Check } from "lucide-react";
 import hljs from "highlight.js";
 import "highlight.js/styles/nord.css";
@@ -8,7 +8,6 @@ import "highlight.js/styles/nord.css";
 export function CodeBlock({ children }: { children: React.ReactNode }) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
-  const [language, setLanguage] = useState<string | null>(null);
 
   const handleCopy = async () => {
     const code = preRef.current?.innerText;
@@ -24,15 +23,6 @@ export function CodeBlock({ children }: { children: React.ReactNode }) {
       const codeElement = preRef.current.querySelector("code");
       if (codeElement) {
         hljs.highlightElement(codeElement as HTMLElement);
-
-        // Detect language class, like "language-js"
-        const langClass = [...codeElement.classList].find((cls) =>
-          cls.startsWith("language-")
-        );
-        if (langClass) {
-          const lang = langClass.replace("language-", "");
-          setLanguage(lang);
-        }
       }
     }
   }, []);

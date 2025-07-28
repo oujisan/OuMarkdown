@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 export const api = axios.create({
   baseURL: "https://api.github.com",
@@ -72,19 +72,6 @@ function extractTitle(content: string): {
   };
 }
 
-// --- Normalisasi slug menjadi nama file aman ---
-function normalizeFilename(slug: string): string {
-  const safeSlug = slug
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9\-]/g, "");
-
-  return safeSlug.endsWith(".md") || safeSlug.endsWith(".mdx")
-    ? safeSlug
-    : `${safeSlug}.mdx`;
-}
-
 export async function getAllMarkdown(): Promise<markdown[]> {
   try {
     const response = await api.get<githubApiFileMeta[]>(
@@ -112,7 +99,7 @@ export async function getAllMarkdown(): Promise<markdown[]> {
           const { title, category } = extractTitle(content);
 
           return { title, slug, category };
-        } catch (err: any) {
+        } catch {
           return {
             title: file.name.replace(/\.md$/, ""),
             slug,
@@ -123,9 +110,10 @@ export async function getAllMarkdown(): Promise<markdown[]> {
     );
 
     return markdowns;
-  } catch (error: any) {
-    const status = axios.isAxiosError(error) && error.response?.status;
-    const message = error.message;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    const status = axiosError.response?.status;
+    const message = axiosError.message;
 
     const log: logMessage = {
       message: error instanceof Error ? message : "Unknown error occurred",
@@ -145,9 +133,10 @@ export async function getMarkdown(slug: string) {
     const { title, filteredContent } = extractTitle(decoded);
 
     return {title, filteredContent};
-  } catch (error: any) {
-    const status = axios.isAxiosError(error) && error.response?.status;
-    const message = error.message;
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    const status = axiosError.response?.status;
+    const message = axiosError.message;
 
     const log: logMessage = {
       message: error instanceof Error ? message : "Unknown error occurred",
@@ -169,7 +158,7 @@ export async function getGitHubRateLimit(): Promise<RateLimitInfo | null> {
     const { limit, remaining, reset } = res.data.rate;
 
     return { limit, remaining, reset };
-  } catch (err) {
+  } catch {
     return null;
   }
 }

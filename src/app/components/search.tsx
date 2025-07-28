@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { markdown } from '@/app/lib/github_api'
 
 type md = {
@@ -26,7 +27,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
       await navigator.clipboard.writeText(`${location.origin}/notes/${slug}`)
       setCopiedSlug(slug)
       setTimeout(() => setCopiedSlug(null), 2000)
-    } catch (err) {
+    } catch {
       alert("Failed copy markdown's URL")
     }
   }
@@ -44,7 +45,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
         await navigator.clipboard.writeText(url)
         alert('Link disalin karena fitur Share tidak didukung browser ini.')
       }
-    } catch (err) {
+    } catch {
       alert('Gagal membagikan tautan.')
     }
   }
@@ -64,7 +65,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
       a.download = `${slug}.md`
       a.click()
       URL.revokeObjectURL(url)
-    } catch (err) {
+    } catch {
       alert('Failed download markdown')
     }
   }
@@ -108,13 +109,15 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
               onClick={() => handleNavigate(post.slug)}
               className="flex gap-4 items-center w-full min-w-0 text-left cursor-pointer"
             >
-              <img
+              <Image
                 src={
                   post.category
                     ? `/category/${post.category}.svg`
                     : '/note.svg'
                 }
                 alt={post.category || 'note'}
+                width={24}
+                height={24}
                 className="h-6 w-auto"
               />
               <p className="font-semibold break-words">{post.title}</p>
@@ -128,9 +131,21 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                 title="Copy"
               >
                 {copiedSlug === post.slug ? (
-                  <img src="/check.svg" alt="Copied" className="w-auto h-5" />
+                  <Image 
+                    src="/check.svg" 
+                    alt="Copied" 
+                    width={20} 
+                    height={20} 
+                    className="w-auto h-5" 
+                  />
                 ) : (
-                  <img src="/copy.svg" alt="Copy Link" className="w-auto h-5" />
+                  <Image 
+                    src="/copy.svg" 
+                    alt="Copy Link" 
+                    width={20} 
+                    height={20} 
+                    className="w-auto h-5" 
+                  />
                 )}
               </button>
 
@@ -139,7 +154,13 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 title="Share"
               >
-                <img src="/share.svg" alt="Share" className="w-auto h-5" />
+                <Image 
+                  src="/share.svg" 
+                  alt="Share" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-5" 
+                />
               </button>
 
               <button
@@ -147,7 +168,13 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 title="Download"
               >
-                <img src="/download.svg" alt="Download" className="w-auto h-5" />
+                <Image 
+                  src="/download.svg" 
+                  alt="Download" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-5" 
+                />
               </button>
             </div>
           </div>

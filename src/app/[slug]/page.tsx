@@ -6,7 +6,7 @@ import Navbar from '@/app/components/navbar'
 import Breadcrumb from '../components/breadcrumb'
 
 type PageProps = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function ViewerPage({ params }: PageProps) {
@@ -26,7 +26,7 @@ export default async function ViewerPage({ params }: PageProps) {
     } else {
       mdx = await serialize(result.filteredContent);
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error('❌ Error saat memuat markdown:', err);
     errorMessage = 'Terjadi kesalahan saat memuat konten.';
   }

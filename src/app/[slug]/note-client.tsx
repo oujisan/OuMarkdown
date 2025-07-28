@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { MDXRemote } from 'next-mdx-remote'
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { mdxComponents } from '@/app/components/mdx-component'

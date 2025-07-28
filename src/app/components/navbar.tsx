@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from "react"
+import Link from 'next/link'
+import Image from 'next/image'
 
 type NavbarProps = {
   title?: string
@@ -16,7 +18,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
       await navigator.clipboard.writeText(`${location.origin}/${slug}`)
       setCopiedSlug(slug)
       setTimeout(() => setCopiedSlug(null), 2000)
-    } catch (err) {
+    } catch {
       alert("Failed copy markdown's URL")
     }
   }
@@ -34,7 +36,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
         await navigator.clipboard.writeText(url)
         alert('Link disalin karena fitur Share tidak didukung browser ini.')
       }
-    } catch (err) {
+    } catch {
       alert('Gagal membagikan tautan.')
     }
   }
@@ -52,7 +54,7 @@ export default function Navbar({ title, slug }: NavbarProps) {
       a.download = `${slug}.md`
       a.click()
       URL.revokeObjectURL(url)
-    } catch (err) {
+    } catch {
       alert('Failed download markdown')
     }
   }
@@ -63,9 +65,15 @@ export default function Navbar({ title, slug }: NavbarProps) {
         <div className="max-w-screen-xl mx-auto py-6 px-4 sm:px-6 md:px-10 lg:px-16">
           <div className="grid grid-cols-3 items-center">
             <div className="flex items-center">
-              <a href="/" className="flex items-center h-full" aria-label="Fumori Home">
-                <img src="/fumori.svg" alt="Fumori Logo" className="h-5 w-auto" />
-              </a>
+              <Link href="/" className="flex items-center h-full" aria-label="Fumori Home">
+                <Image 
+                  src="/fumori.svg" 
+                  alt="Fumori Logo" 
+                  width={20} 
+                  height={20} 
+                  className="h-5 w-auto" 
+                />
+              </Link>
             </div>
             <div className="text-center text-sm font-mono text-[var(--color-gray)] break-words max-w-[80%] mx-auto">
               <p>{title}</p>
@@ -77,9 +85,21 @@ export default function Navbar({ title, slug }: NavbarProps) {
                 title="Copy"
               >
                 {copiedSlug === slug ? (
-                  <img src="/check.svg" alt="Copied" className="w-auto h-5" />
+                  <Image 
+                    src="/check.svg" 
+                    alt="Copied" 
+                    width={20} 
+                    height={20} 
+                    className="w-auto h-5" 
+                  />
                 ) : (
-                  <img src="/copy.svg" alt="Copy Link" className="w-auto h-5" />
+                  <Image 
+                    src="/copy.svg" 
+                    alt="Copy Link" 
+                    width={20} 
+                    height={20} 
+                    className="w-auto h-5" 
+                  />
                 )}
               </button>
               <button
@@ -87,14 +107,26 @@ export default function Navbar({ title, slug }: NavbarProps) {
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 title="Share"
               >
-                <img src="/share.svg" alt="Share" className="w-auto h-5" />
+                <Image 
+                  src="/share.svg" 
+                  alt="Share" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-5" 
+                />
               </button>
               <button
                 onClick={() => handleDownload(slug)}
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 title="Download"
               >
-                <img src="/download.svg" alt="Download" className="w-auto h-5" />
+                <Image 
+                  src="/download.svg" 
+                  alt="Download" 
+                  width={20} 
+                  height={20} 
+                  className="w-auto h-5" 
+                />
               </button>
             </div>
           </div>
