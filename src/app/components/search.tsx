@@ -32,22 +32,18 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
     }
   }
 
-  const handleShare = async (slug: string) => {
+   const handleShare = async (slug: string, title: string) => {
     const url = `${location.origin}/${slug}`
-    try {
       if (navigator.share) {
         await navigator.share({
-          title: 'Lihat catatan ini',
-          text: 'Markdown ini mungkin berguna untukmu.',
+          title: `${title}`,
+          text: 'Shared from OuMarkdownn',
           url,
         })
       } else {
         await navigator.clipboard.writeText(url)
-        alert('Link disalin karena fitur Share tidak didukung browser ini.')
+        alert("Link copied! Sharing not supported on this browser.")
       }
-    } catch {
-      alert('Gagal membagikan tautan.')
-    }
   }
 
   const handleDownload = async (slug: string) => {
@@ -120,7 +116,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
                 height={24}
                 className="h-6 w-auto"
               />
-              <p className="font-semibold break-words text-sm sm:text-base md:text-lg">
+              <p className="font-semibold break-words text-sm sm:text-base md:text-base">
                 {post.title}
               </p>
 
@@ -130,7 +126,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
             <div className="flex gap-4 items-center ml-4">
               <button
                 onClick={() => handleCopy(post.slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer hidden sm:block"
                 title="Copy"
               >
                 {copiedSlug === post.slug ? (
@@ -153,7 +149,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
               </button>
               <button
                 onClick={() => handleDownload(post.slug)}
-                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer "
+                className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer hidden sm:block"
                 title="Download"
               >
                 <Image 
@@ -166,7 +162,7 @@ export default function Search({ markdowns, searchQuery = '' }: md) {
               </button>
 
               <button
-                onClick={() => handleShare(post.slug)}
+                onClick={() => handleShare(post.slug, post.title)}
                 className="opacity-30 hover:opacity-100 transition-opacity duration-200 cursor-pointer"
                 title="Share"
               >
