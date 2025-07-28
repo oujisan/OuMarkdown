@@ -4,7 +4,7 @@
     baseURL: "https://api.github.com",
     headers: {
       Accept: "application/vnd.github+json",
-      Authorization: 'Bearer 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',
+      Authorization: `Bearer ${process.env.TOKEN}`,
       'X-GitHub-Api-Version': '2022-11-28'
     }
   })
