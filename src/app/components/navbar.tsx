@@ -24,21 +24,17 @@ export default function Navbar({ title, slug }: NavbarProps) {
   }
 
   const handleShare = async (slug: string) => {
-    const url = `${location.origin}/notes/${slug}`
-    try {
+    const url = `${location.origin}/${slug}`
       if (navigator.share) {
         await navigator.share({
-          title: 'Lihat catatan ini',
-          text: 'Markdown ini mungkin berguna untukmu.',
+          title: `${title}`,
+          text: 'Shared from OuMarkdownn',
           url,
         })
       } else {
         await navigator.clipboard.writeText(url)
-        alert('Link disalin karena fitur Share tidak didukung browser ini.')
+        alert("Link copied! Sharing not supported on this browser.")
       }
-    } catch {
-      alert('Gagal membagikan tautan.')
-    }
   }
 
   const handleDownload = async (slug: string) => {
