@@ -1,4 +1,4 @@
-# 📝 OuMarkdown
+# 📝 OuMarkdown (OuMd)
 
 **OuMarkdown** is a markdown-based note-sharing platform built with **MDX**, focused on speed, simplicity, and full customization.  
 It is designed as a personal tool for [Ouji](https://github.com/oujisan) to easily publish and share notes directly from a GitHub repository.  
