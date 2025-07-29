@@ -236,7 +236,7 @@ button[aria-label="Copy Code"] svg {
     border: none;
     height: 1px;
     background-color: var(--color-text-dim);
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 
   .prose strong {
