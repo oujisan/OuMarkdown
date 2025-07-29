@@ -170,7 +170,7 @@ button[aria-label="Copy Code"] svg {
 
 .prose ul li {
   margin: 0.5rem 0;
-  color: var(--color-text-light);
+  color: var(--color-text-dim);
 }
 
 .prose input[type="checkbox"] {
