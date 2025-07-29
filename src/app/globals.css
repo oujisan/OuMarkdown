@@ -30,7 +30,7 @@ button[aria-label="Copy Code"] svg {
     font-family: var(--font-sans);
     color: var(--color-text-dim);
     line-height: 1.75;
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .prose h1 {
@@ -58,6 +58,9 @@ button[aria-label="Copy Code"] svg {
   }
 
   @media (max-width: 640px) {
+    .prose {
+      font-size: 0.9rem;
+    }
     .prose h1 {
       font-size: 1.3rem;
     }
