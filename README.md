@@ -3,7 +3,7 @@
 **OuMarkdown** is a markdown-based note-sharing platform built with **MDX**, focused on speed, simplicity, and full customization.  
 It is designed as a personal tool for [Ouji](https://github.com/oujisan) to easily publish and share notes directly from a GitHub repository.  
 All notes are stored in [OuVault](https://github.com/oujisan/OuVault), a public GitHub repository where markdown files are written and managed locally using [Obsidian](https://obsidian.md).  
-Once the notes are pushed to GitHub, they become instantly accessible on the web and are rendered dynamically through the GitHub API.
+Once the notes are pushed to GitHub, they become instantly accessible on the web and are rendered dynamically through the GitHub API. You can explore the website live at [oumd.vercel.app](https://oumd.vercel.app).
 
 ## ⚙️ Tech Stack
 
@@ -26,39 +26,24 @@ The minimalist design, smooth reading experience, and clever use of GitHub as a 
 Every note published through OuMarkdown is publicly accessible. Visitors — or Ouji himself — can simply copy a link to instantly share any markdown file as a live, readable web page.
 
 ### 🗂️ 2. Automatic Category Icons  
-Each markdown file begins with a header in the format:
-
-`# [{category}] {title}`
-
-OuMarkdown automatically parses this and displays a unique icon based on the category.  
-If a matching icon is found in the `./public/category` directory, it will be displayed. Otherwise, a default icon will be used.  
-Currently, more than **50 categories** are supported.
+Each markdown file begins with a header in the format `# [{category}] {title}`,  OuMarkdown automatically parses this and displays a unique icon based on the category. If a matching icon is found in the `./public/category` directory, it will be displayed. Otherwise, a default icon will be used. Currently, more than **50 categories** are supported.
 
 ### 🔗 3. Optimized GitHub API Usage  
 By leveraging GitHub’s REST API and using a **fine-grained personal access token**, OuMarkdown supports up to **5000 requests per hour**, ensuring fast and uninterrupted access even during high-traffic usage.
 
 ### ⬇️ 4. Markdown File Download  
-Users can easily download any markdown file via a one-click action button using GitHub’s raw content endpoint:  
-`https://raw.githubusercontent.com/...`  
-This makes it convenient to reuse or save notes locally.
+Users can easily download any markdown file via a one-click action button using GitHub’s raw content endpoint:  `https://raw.githubusercontent.com/...` . This makes it convenient to reuse or save notes locally.
 
 ### 🔎 5. Intelligent Search & Filtering  
-A smart search system helps users find notes quickly and intuitively.  
-To filter by category, simply prefix the keyword with `#`, for example:  
-`#ai` — to find notes in the AI category.  
-Search results are fast, structured, and relevant.
+A smart search system helps users find notes quickly and intuitively. To filter by category, simply prefix the keyword with `#`, for example: `#ai` to find notes in the AI category. Search results are fast, structured, and relevant.
 
 ## 🔮 Future Plans
 
 ### 📑 1. Automatic Table of Contents (ToC)  
-A table of contents will be generated for each markdown note to improve navigation.  
-All headers (`#`, `##`, `###`, etc.) inside the markdown will be parsed and displayed as clickable links, allowing users to jump directly to any section in the note.  
-This will be especially helpful for long-form content or technical documentation.
+A table of contents will be generated for each markdown note to improve navigation. All headers (`#`, `##`, `###`, etc.) inside the markdown will be parsed and displayed as clickable links, allowing users to jump directly to any section in the note. This will be especially helpful for long-form content or technical documentation.
 
 ### ✍️ 2. Create, Update, and Delete Notes from the Web  
-OuMarkdown will soon support **creating, editing, and deleting** markdown notes directly from the web interface.  
-These features will be protected by **password authentication**, ensuring only authorized access.  
-The editing experience will include a **live markdown preview**, offering a writing workflow similar to **Obsidian** or **VS Code**, all within the browser.
+OuMarkdown will soon support **creating, editing, and deleting** markdown notes directly from the web interface. These features will be protected by **password authentication**, ensuring only authorized access. The editing experience will include a **live markdown preview**, offering a writing workflow similar to **Obsidian** or **VS Code**, all within the browser.
 
 
 ## Category / Topic:
