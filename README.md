@@ -3,7 +3,7 @@
 **OuMarkdown** is a markdown-based note-sharing platform built with **MDX**, focused on speed, simplicity, and full customization.  
 It is designed as a personal tool for [Ouji](https://github.com/oujisan) to easily publish and share notes directly from a GitHub repository.  
 All notes are stored in [OuVault](https://github.com/oujisan/OuVault), a public GitHub repository where markdown files are written and managed locally using [Obsidian](https://obsidian.md).  
-Once the notes are pushed to GitHub, they become instantly accessible on the web and are rendered dynamically through the GitHub API. You can explore the website live at [oumd.vercel.app](https://oumd.vercel.app).
+Once the notes are pushed to GitHub, they become instantly accessible on the web and are rendered dynamically through the GitHub API. You can explore the website live at [oumd.oujisan.my.id](https://oumd.oujisan.my.id).
 
 ## ⚙️ Tech Stack
 
