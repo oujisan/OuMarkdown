@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 const badBots = [
-  'go-http', 'curl', 'python', 'axios', 'Java', 'HttpClient',
+  'go-http', 'curl', 'python', 'axios', 'java', 'httpclient',
   'libwww-perl', 'wget', 'httpx', 'ruby', 'node-fetch',
   'discord-crawler', 'scrapy', 'aiohttp', 'okhttp', 'powershell'
 ]
@@ -21,5 +21,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/:path*'],
+  matcher: ['/((?!_next|favicon.ico|robots.txt|sitemap.xml).*)'],
 }

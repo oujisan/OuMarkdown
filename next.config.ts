@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(category/)?(.*)\\.svg",
+        source: "/(.*)\\.svg",
         headers: [
           {
             key: "Cache-Control",
