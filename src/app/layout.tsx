@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "OuMarkdown",
   description: "Oujisan's Markdown Collection",
   icons: {
-    icon: '/fumori.ico',
+    icon: '/fumori-v2.ico',
   },
 };
 
