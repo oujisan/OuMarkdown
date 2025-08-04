@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
 
-const token = process.env.GITHUB_TOKEN
+const token = process.env.NEXT_PUBLIC_GITHUB_TOKEN
 
 export const api = axios.create({
   baseURL: "https://api.github.com",
