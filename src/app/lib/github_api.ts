@@ -180,10 +180,11 @@ export interface RateLimitInfo {
 
 export async function getGitHubRateLimit(): Promise<RateLimitInfo | null> {
   try {
-    if (!token) {
-      console.warn('No GitHub token available for rate limit check')
-      return null
-    }
+    // if (!token) {
+    //   console.log(token)
+    //   console.warn('No GitHub token available for rate limit check')
+    //   return null
+    // }
 
     const res = await api.get('/rate_limit');
     const { limit, remaining, reset } = res.data.rate;
